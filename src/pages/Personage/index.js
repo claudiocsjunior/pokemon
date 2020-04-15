@@ -32,7 +32,7 @@ export default function Personage(){
         <div className={classes.toolbar} />
           <div className="containerCards">
           {personages.map((row, index) => (
-            <Card name={row.name} color={index % 2 === 0 ? 'primary' : 'secondary'}/>
+            <Card key={index} name={row.name} color={index % 2 === 0 ? 'primary' : 'secondary'} url={row.url}/>
           ))}
           </div>
       </div>
