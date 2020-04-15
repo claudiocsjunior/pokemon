@@ -34,7 +34,6 @@ export default function Types(){
                   <TableHead>
                     <TableRow>
                       <TableCell>Name</TableCell>
-                      <TableCell align="right">Detalhes</TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
@@ -42,11 +41,6 @@ export default function Types(){
                       <TableRow key={index}>
                         <TableCell component="th" scope="row">
                           {row.name}
-                        </TableCell>
-                        <TableCell align="right">
-                          <IconButton color="primary" onClick={() => {}}>
-                            <DoubleArrow />
-                          </IconButton>
                         </TableCell>
                       </TableRow>
                     ))}

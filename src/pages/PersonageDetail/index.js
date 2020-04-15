@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useHistory} from 'react-router-dom';
 import NavBar from '../../components/AppBar';
-import { Card, CardContent, Typography, CardActions, Button, List, ListItem, ListItemAvatar, 
-  Avatar, ListItemText, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, IconButton} from '@material-ui/core';
+import { Card, CardContent, Typography, CardActions, Button, List, ListItem, ListItemAvatar, Avatar, ListItemText} from '@material-ui/core';
 import { ChevronLeft, Image } from '@material-ui/icons';
 import useStyles from './styles';
 import './styles.css';
@@ -17,19 +16,17 @@ export default function PersonageDetail(){
     const [ability, setAbility] = useState([]);
     const [forms, setForms] = useState([]);
     const [specie, setSpecie] = useState({});
-    const [move, setMoves] = useState([]);
 
     async function handleDetails(){
       try{  
         const response = await pokeApi.get(`api/v2/pokemon/${id}`);
         
-        const {name, weight, base_experience, height, order, abilities, forms, species, moves} =  response.data;
+        const {name, weight, base_experience, height, order, abilities, forms, species} =  response.data;
 
         setPersonage({name, weight, base_experience, height, order});
         setAbility(abilities);
         setForms(forms);
         setSpecie(species);
-        setMoves(moves);
 
         console.log(response.data);
       }catch(err){
@@ -39,7 +36,7 @@ export default function PersonageDetail(){
 
     useEffect( () => {
       handleDetails();
-    });
+    }, [id]);
 
     return(
         <div className={classes.root}>
@@ -64,7 +61,7 @@ export default function PersonageDetail(){
                         </Typography>
                         
                         <Typography className={classes.title} color="textSecondary" gutterBottom>
-                        Altura (decímetros)
+                        Altura
                         </Typography>
                         <Typography className={classes.marginTipografy}>
                         {`${personage.height} decímetros`}
@@ -84,14 +81,6 @@ export default function PersonageDetail(){
                         {personage.order} 
                         </Typography>
                     </CardContent>
-                    <CardActions>
-                        <Button 
-                        size="small" 
-                        onClick={() => {history.goBack()}}>
-                            <ChevronLeft/>
-                            Voltar a listagem de personagens
-                        </Button>
-                    </CardActions>
                 </Card>
               </div>
               <div className={classes.marginCard}>
@@ -157,30 +146,17 @@ export default function PersonageDetail(){
                   </Card>
                 </div>
               </div>
-              <div >
-                <TableContainer component={Paper}>
-                  <Table className={classes.table} size="small" aria-label="a dense table">
-                    <TableHead>
-                      <TableRow>
-                        <TableCell>Movimentos</TableCell>
-                        <TableCell align="right">Detalhes</TableCell>
-                      </TableRow>
-                    </TableHead>
-                    <TableBody>
-                      {move.map((row, index) => (
-                        <TableRow key={index}>
-                          <TableCell component="th" scope="row">
-                            {row.move.name}
-                          </TableCell>
-                          <TableCell align="right">
-                            <IconButton color="primary" onClick={() => {}}>
-                            </IconButton>
-                          </TableCell>
-                        </TableRow>
-                      ))}
-                    </TableBody>
-                  </Table>
-                </TableContainer>
+              <div>
+                <Card>
+                  <CardActions>
+                      <Button 
+                      size="small" 
+                      onClick={() => {history.goBack()}}>
+                          <ChevronLeft/>
+                          Voltar a listagem de personagens
+                      </Button>
+                  </CardActions>
+                </Card>
               </div>
           </div>
         </div>
