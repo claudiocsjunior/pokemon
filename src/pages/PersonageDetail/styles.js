@@ -16,9 +16,6 @@ const useStyles = makeStyles((theme) => ({
     table: {
       minWidth: 650,
     },
-    card: { 
-      marginRight: '3%',
-    },
     bullet: {
       display: 'inline-block',
       margin: '0 2px',
@@ -44,7 +41,15 @@ const useStyles = makeStyles((theme) => ({
     },
     marginTipografy: {
         marginBottom: 10
-    }
+    },
+    marginCard: {
+      marginBottom: 20
+    },
+    list: {
+      width: '100%',
+      maxWidth: 360,
+      backgroundColor: theme.palette.background.paper,
+    },
   }));
 
   export default useStyles;
