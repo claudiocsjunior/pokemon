@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom'; 
 import clsx from 'clsx';
 import { useTheme, Drawer, AppBar, Toolbar, List, CssBaseline, Typography, Divider, IconButton, ListItem, ListItemIcon, ListItemText, Button} from '@material-ui/core';
 import {Menu, ChevronLeft, ChevronRight, SupervisedUserCircle, Adb} from '@material-ui/icons';
@@ -8,6 +9,7 @@ export default function MiniDrawer(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const history = useHistory();
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -18,8 +20,8 @@ export default function MiniDrawer(props) {
   };
 
   const listDrawer = [
-      {title: 'Personagens', icon: <SupervisedUserCircle/>},
-      {title: 'Tipos', icon: <Adb/>},
+      {title: 'Personagens', icon: <SupervisedUserCircle/>, route: '/'},
+      {title: 'Tipos', icon: <Adb/>, route: '/types'},
   ]
 
   return (
@@ -48,7 +50,7 @@ export default function MiniDrawer(props) {
         <Divider />
         <List>
           {listDrawer.map((object, index) => (
-            <ListItem button key={index}>
+            <ListItem button onClick={() => history.push(object.route)} key={index}>
               <ListItemIcon>{object.icon}</ListItemIcon>
               <ListItemText primary={object.title} />
             </ListItem>
