@@ -8,5 +8,5 @@ Rodar a aplicação
 
 Como o foco é simplesmente o react, o login da aplicação não foi feito por meio da API, e sim por usuário e senha fake:
 
-usuário: admin
-Senha admin
+### usuário: admin
+### Senha admin
