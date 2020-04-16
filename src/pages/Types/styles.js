@@ -16,6 +16,23 @@ const useStyles = makeStyles((theme) => ({
     table: {
         minWidth: 650,
     },
+    list: {
+        width: '100%',
+        maxWidth: 360,
+        backgroundColor: theme.palette.background.paper,
+    },
+    dividerSecondary: {
+        backgroundColor: 'rgb(244, 143, 177)'
+    },
+    fontSecondary: {
+        color: 'rgb(244, 143, 177)'
+    },
+    dividerPrimary: {
+        backgroundColor: "#3f51b5"
+    },
+    fontPrimary: {
+        color: "#3f51b5"
+    }
   }));
 
   export default useStyles;

@@ -1,6 +1,7 @@
 import React from 'react';
-import { Card, CardActions, CardContent, Button, Typography, Divider } from '@material-ui/core';
+import { Card, CardActions, CardContent, Button, Typography, Divider} from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
+import { ChevronRight } from '@material-ui/icons';
 
 import useStyles from './styles';
 
@@ -27,12 +28,12 @@ export default function SimpleCard(props) {
         <Divider className={classes.cardBlue}/>
       </CardContent>
       <CardActions>
-        <Button 
-          size="small" 
-          className={props.color === 'primary' ? classes.fontPrimary : classes.fontSecondary}
-          onClick={() => handleDetails()}>
-            Acessar Detalhes do Personagem
-        </Button>
+          <Button 
+            size="small" 
+            className={props.color === 'primary' ? classes.fontPrimary : classes.fontSecondary}
+            onClick={() => handleDetails()}>
+              Detalhes <ChevronRight fontSize="small"/>
+          </Button>
       </CardActions>
     </Card>
   );

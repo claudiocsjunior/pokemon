@@ -6,7 +6,7 @@ import Card from '../../components/Card';
 
 import pokeApi from '../../services/pokeApi';
 
-import './style.css';
+import '../../global.css';
 
 export default function Personage(){
   const classes = useStyles();
@@ -30,7 +30,7 @@ export default function Personage(){
       <NavBar title="Personagens"/>
       <div className={classes.content}>
         <div className={classes.toolbar} />
-          <div className="containerCards">
+          <div className="containerDivider">
           {personages.map((row, index) => (
             <Card key={index} name={row.name} color={index % 2 === 0 ? 'primary' : 'secondary'} url={row.url}/>
           ))}

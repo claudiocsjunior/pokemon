@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom'; 
 import clsx from 'clsx';
 import { useTheme, Drawer, AppBar, Toolbar, List, CssBaseline, Typography, Divider, IconButton, ListItem, ListItemIcon, ListItemText, Button} from '@material-ui/core';
-import {Menu, ChevronLeft, ChevronRight, SupervisedUserCircle, Adb} from '@material-ui/icons';
+import {Menu, ArrowBack, ChevronLeft, ChevronRight, SupervisedUserCircle, Adb} from '@material-ui/icons';
 import useStyles from './styles';
 import { isAuthenticated }  from '../../auth';
 
@@ -35,7 +35,7 @@ export default function MiniDrawer(props) {
   function logout(){
     if(isAuthenticated()){
       localStorage.removeItem('appPokemonName');
-      history.push('/')
+      history.push('/login')
     }
   }
 
@@ -72,7 +72,7 @@ export default function MiniDrawer(props) {
           ))}
             {isAuthenticated() &&  
             <ListItem button onClick={() => {logout()}}>
-              <ListItemIcon><ChevronLeft/></ListItemIcon>
+              <ListItemIcon><ArrowBack/></ListItemIcon>
               <ListItemText primary='Logout' />
             </ListItem>
             }

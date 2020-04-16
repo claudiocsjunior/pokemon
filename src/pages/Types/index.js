@@ -1,11 +1,12 @@
 import React, {useState ,useEffect} from 'react';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, IconButton} from '@material-ui/core';
-import { DoubleArrow } from '@material-ui/icons';
+import { Card, CardContent, ListItem, ListItemAvatar, Avatar, ListItemText } from '@material-ui/core';
+import { Image } from '@material-ui/icons';
 import useStyles from './styles';
 
 import NavBar from '../../components/AppBar';
 
 import pokeApi from '../../services/pokeApi';
+import './styles.css';
 
 export default function Types(){
     const classes = useStyles();
@@ -29,24 +30,24 @@ export default function Types(){
           <NavBar title="Tipos"/>
           <div className={classes.content}>
             <div className={classes.toolbar} />
-              <TableContainer component={Paper}>
-                <Table className={classes.table} size="small" aria-label="a dense table">
-                  <TableHead>
-                    <TableRow>
-                      <TableCell>Name</TableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {types.map((row, index) => (
-                      <TableRow key={index}>
-                        <TableCell component="th" scope="row">
-                          {row.name}
-                        </TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </TableContainer>
+              <div className="containerTypes">
+              { types.map((obj, index) => {
+                  return (
+                  <Card>
+                    <CardContent>
+                        <ListItem key={index}>
+                          <ListItemAvatar>
+                            <Avatar>
+                              <Image />
+                            </Avatar>
+                          </ListItemAvatar>
+                          <ListItemText className={index % 2 === 0 ? classes.fontPrimary : classes.fontSecondary} primary={obj.name} />
+                        </ListItem>
+                    </CardContent>
+                  </Card>
+                );
+                })}
+              </div>
           </div>
         </div>
     
